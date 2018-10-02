@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { EmployeesService } from '../../services/employees.service';
 
 @Component({
   selector: 'app-employees-table',
@@ -8,9 +9,10 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class EmployeesTableComponent implements OnInit {
 
-  constructor() { }
+  constructor(private employeesService: EmployeesService) { }
 
   ngOnInit() {
+    console.log('service',this.employeesService.getEmployees());
   }
 
 }

@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { EmployeesTableComponent } from './employees-table/employees-table.component';
-import { EmployeeRowComponent } from './employee-row/employee-row.component';
+import { EmployeesTableComponent } from './components/employees-table/employees-table.component';
+import { EmployeeRowComponent } from './components/employee-row/employee-row.component';
 
+import { EmployeesService } from './services/employees.service';
 
 @NgModule({
   declarations: [
@@ -14,9 +15,12 @@ import { EmployeeRowComponent } from './employee-row/employee-row.component';
     EmployeeRowComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [
+    EmployeesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
