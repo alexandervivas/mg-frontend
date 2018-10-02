@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { EmployeesService } from '../../services/employees.service';
+import { Employee } from '../../models/employee';
 
 @Component({
   selector: 'app-employees-table',
@@ -9,10 +10,27 @@ import { EmployeesService } from '../../services/employees.service';
 })
 export class EmployeesTableComponent implements OnInit {
 
+  employees: Array<Employee> = [];
+  employeeID: string = '';
+
   constructor(private employeesService: EmployeesService) { }
 
   ngOnInit() {
-    console.log('service',this.employeesService.getEmployees());
+  }
+
+  getEmployees() {
+    if(this.employeeID === '') {
+      this.employeesService.getEmployees().subscribe(
+        response => this.employees = response,
+        error => console.error(error)
+      );
+    }
+    else {
+      this.employeesService.getEmployee(Number(this.employeeID)).subscribe(
+        response => this.employees = [response],
+        error => console.error(error)
+      );
+    }
   }
 
 }

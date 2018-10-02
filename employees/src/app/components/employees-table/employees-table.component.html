@@ -1,10 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-1">id</div>
-    <div class="col-sm-3">name</div>
-    <div class="col-sm-3">contractTypeName</div>
-    <div class="col-sm-3">roleName</div>
-    <div class="col-sm-2">annualSalary</div>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" [(ngModel)]="employeeID">
+    </div>
+    <div class="col-sm-3">
+      <button type="button" class="btn btn-primary" (click)="getEmployees()">Search</button>
+    </div>
   </div>
-  <app-employee-row></app-employee-row>
+  <br>
+  <div class="row">
+    <div class="col-sm-1">ID</div>
+    <div class="col-sm-3">name</div>
+    <div class="col-sm-3">Contract type</div>
+    <div class="col-sm-3">Role</div>
+    <div class="col-sm-2">Annual salary</div>
+  </div>
+  <br>
+  <div *ngFor="let employee of employees">
+    <app-employee-row  [employee]="employee"></app-employee-row>
+  </div>
 </div>
